@@ -1,0 +1,100 @@
+<h1 class="flex justify-content-center">Unsere Pakete</h1>
+<input pInputText type="text" [(ngModel)]="username" placeholder="Enter Instagram username">
+<p-button class="ml-1" (click)="onSearch()">Search</p-button>
+
+
+<div class="shadow-4 my-5 py-5">
+  <div class=" flex flex-row justify-content-center">
+    <div class="">Month</div>
+    <p-inputSwitch #elt (onChange)="check(elt)" [(ngModel)]="isOn" class="ng-dirty ng-invalid mx-2" />
+    <div class="">viertelJahr</div>
+  </div>
+</div>
+
+<div class="grid">
+  @for (abos of Abos; track abos.id; let i=$index){
+    <div class="col-12 md:col-4  inline-block">
+      <div class="shadow-3 border-round-2xl" style="background-color:#fff;">
+        <div class="text-center  text-white shadow-3 border-round-top-2xl" [ngStyle]="{'background-color':abos.id==2 ? '#9b86fd':(abos.id==3 ? '#976cdb' : '#a5a5a5')}">
+          <h3>
+            <span>{{ abos.name }}</span>
+          </h3>
+          <h3 [ngClass]="{'original-price':true}">
+            <span>{{ abos.preis | number}}</span>
+          </h3>
+          <h4 class="flex justify-content-center  font-light text-lg">Starte durch mit echtem Wachstum - Unser Einsteiger Basis Paket</h4>
+        </div>
+        @for (desc of abos.description; let descIndex= $index; track trackByDescription){
+          <ul class="">
+            <li class="mt-4" style="list-style-type:none; border-style: solid; border-width: 0px 0px 1px 0px;border-color: #e7e7e7;">
+              <div class="flex justify-content-start">
+              <span>
+                <i class="pi mb-2"  [ngClass]="{
+                'pi-check': desc !== ''}"
+                [ngStyle]="
+                {'color': desc!==''? '#fff':null,
+                'background-color': desc!==''? '#289155':null,
+                'border': desc!==''? '2px solid #289155':null,
+                'border-radius': desc!==''? '100%':null
+                }">
+                </i>
+                {{desc}}
+              </span>
+              </div>
+            </li>
+          </ul>
+        }
+        @if(i==1 ||i==2){
+          <p-button class="flex justify-content-center mt-5" label="Beginnen Sie das Wachstum" (onClick)="selectAbo(abos)" ></p-button>
+        }
+        @if(i==0){
+          <p-button class="flex justify-content-center" label="Beginnen Sie das Wachstum" (onClick)="selectAbo(abos)" ></p-button>
+        }
+      </div>
+    </div>
+  }
+</div>
+
+
+
+
+<!--<div>-->
+<!--<p-radioButton  #rdBtnM (onClick)="onClickVersNrRadioBtnSelectionChanged(rdBtnM)" value="Monat" label="Month"-->
+<!--                [(ngModel)]="radioButtonState">-->
+<!--</p-radioButton>-->
+<!--</div>-->
+
+<!--<div>-->
+<!--<p-radioButton  #rdBtnV (onClick)="onClickVersNrRadioBtnSelectionChanged(rdBtnV)" value="viertelJahr" label="viertelJahr"-->
+<!--                [(ngModel)]="radioButtonState">-->
+<!--</p-radioButton>-->
+<!--</div>-->
+<!--@if (radioButtonState=='Monat'){-->
+<!--  <div>-->
+<!--    hello Monat-->
+<!--  </div>-->
+<!--} @if(radioButtonState=='viertelJahr') {-->
+<!--  <div>-->
+<!--    hello viertelJahr-->
+<!--  </div>-->
+<!--}-->
+<!--<div class="grid">-->
+<!--  <div class="flex justify-content-center"></div>-->
+<!--  <div class="md:col-5 col-12 sm:col-12  md:col-offset-3 col-offset-0">-->
+<!--    <p-radioButton-->
+<!--      name="AboArt"-->
+<!--      value="Monat"-->
+<!--      label="Month"-->
+<!--      [(ngModel)]="radioButtonState">-->
+<!--    </p-radioButton>-->
+<!--  </div>-->
+
+<!--  <div class="md:col-4 col-12 sm:col-12">-->
+<!--    <p-radioButton-->
+<!--      name="AboArt"-->
+<!--      value="viertelJahr"-->
+<!--      label="viertelJahr"-->
+<!--      [(ngModel)]="radioButtonState">-->
+<!--    </p-radioButton>-->
+<!--  </div>-->
+<!--</div>-->
