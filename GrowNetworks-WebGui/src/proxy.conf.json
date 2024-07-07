@@ -1,0 +1,11 @@
+{
+  "/api": {
+    "target": "https://www.instagram.com",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/api": ""
+    }
+  }
+}
